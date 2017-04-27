@@ -22,11 +22,14 @@ Probably best to think of these as examples to build your own
 playbooks as I am sure the version numbers of the specific
 applications may not be what you want them to be.
 
+#### Table of Contents
+
+* [Algorithmic Trading Research Desktop](https://github.com/tmendoza/ansible#algorithmic-trading-research-desktop)
 
 Contents
 --------
 
-### Algorithmic Trading Research Dekstop
+### Algorithmic Trading Research Desktop
 
 #### Description
 Ansible Playbook for configuring a (L)ubuntu desktop environment to be
@@ -53,10 +56,10 @@ $ ansible-playbook -u tmendoza -b -K --become-user=root
 
 #### Currently Supported Ubuntu OS Release:
 
-Distributor ID:	Ubuntu
-Description:	Ubuntu 17.04
-Release:	17.04
-Codename:	zesty
+* __Distributor ID:__	Ubuntu
+* __Description:__	Ubuntu 17.04
+* __Release:__	17.04
+* __Codename:__	zesty
 
 #### References
 * https://www.quantstart.com/articles/Installing-a-Desktop-Algorithmic-Trading-Research-Environment-using-Ubuntu-Linux-and-Python
