@@ -1,0 +1,162 @@
+##################################################################################################
+# Ansible Playbook for configuring a (L)ubuntu desktop environment to be used for Algorithmic
+# Trading Research.  This is based off of the awesome educational program put together
+# by Michael Halls-Moore at https://www.quantstart.com/
+#
+# Currently Supported Ubuntu OS Release:
+#
+#       Distributor ID: Ubuntu
+#       Description:    Ubuntu 17.04
+#       Release:        17.04
+#       Codename:       zesty
+#
+# References:
+#         https://www.quantstart.com/articles/Installing-a-Desktop-Algorithmic-Trading-Research-Environment-using-Ubuntu-Linux-and-Python
+#         https://www.quantstart.com/articles/Securities-Master-Database-with-MySQL-and-Python
+#
+# Notes:  This playbook only installs the basic packages and python libraries needed.  It does not do the actual configuration right now.
+#         That will be coming in the next release of this Playbook.
+#
+# Author: Tony A. Mendoza
+#
+#
+
+- hosts: algo-desktop
+  vars:
+
+  tasks:
+    - name: Install all of the GCC compiler tools needed to do basic development        
+      apt: pkg=build-essential state=installed update_cache=true
+
+    - name: Install library of linear algebra routines
+      apt: pkg=liblapack-dev  state=installed update_cache=true
+
+    - name: Install Basic Linear Algebra Subroutines
+      apt: pkg=libblas-dev state=installed update_cache=true
+
+    - name: Install Automatically Tuned Linear Algebra Software
+      apt: pkg=libatlas-base-dev  state=installed update_cache=true
+
+    - name: Install GNU Fortran 95 compiler 
+      apt: pkg=gfortran  state=installed update_cache=true
+
+    - name: Install PNG library
+      apt: pkg=libpng-dev  state=installed update_cache=true
+
+    - name: Install JPEG Library
+      apt: pkg=libjpeg8-dev  state=installed update_cache=true
+
+    - name: Install Freetype6 Library
+      apt: pkg=libfreetype6-dev  state=installed update_cache=true
+
+    - name: Install GIT fast, scalable, distributed revision control system
+      apt: pkg=git  state=installed update_cache=true
+
+    - name: Install GIT Documentation
+      apt: pkg=git-doc  state=installed update_cache=true
+
+    - name: Install Git UNIX Style Manuals
+      apt: pkg=git-man state=installed update_cache=true
+
+    - name: Install MariaDB (MySQL) Client Tools
+      apt: pkg=mariadb-client state=installed update_cache=true
+
+    - name: Install MariaDb (MySQL) Database Server
+      apt: pkg=mariadb-server state=installed update_cache=true
+      notify:
+        - Start MariaDB Server
+        
+    - name: Install MariaDB (MySQL) Common Tools
+      apt: pkg=mariadb-common state=installed update_cache=true
+      
+    - name: Install Python interactive high-level object-oriented language
+      apt: pkg=python state=installed update_cache=true
+
+    - name: Install Python package installer
+      apt: pkg=python-pip state=installed update_cache=true
+
+    - name: Install header files and a static library for Python 
+      apt: pkg=python-dev state=installed update_cache=true
+
+    - name: Header files and a static library for Python (v2.7)
+      apt: pkg=python2.7-dev state=installed update_cache=true
+
+    - name: Install Numerical Python adds a fast array facility to the Python language
+      apt: pkg=python-numpy state=installed update_cache=true
+
+    - name: Install NumPy documentation
+      apt: pkg=python-numpy-doc state=installed update_cache=true
+
+    - name: Install scientific tools for Python
+      apt: pkg=python-scipy state=installed update_cache=true
+
+    - name: Install scientific library for Python - documentation
+      apt: pkg=python-scipy-doc state=installed update_cache=true
+
+    - name: Install data structures for "relational" or "labeled" data for Python
+      apt: pkg=python-pandas state=installed update_cache=true
+
+    - name: Install documentation and examples for pandas
+      apt: pkg=python-pandas-doc state=installed update_cache=true
+
+    - name: Install low-level implementations and bindings for pandas
+      apt: pkg=python-pandas-lib state=installed update_cache=true
+
+    - name: Install transitional compatibility package for scikits.learn
+      apt: pkg=python-scikits-learn state=installed update_cache=true
+
+    - name: Install Python module for the estimation of statistical models
+      apt: pkg=python-statsmodels state=installed update_cache=true
+
+    - name: Install documentation and examples for statsmodels
+      apt: pkg=python-statsmodels-doc state=installed update_cache=true
+
+    - name: Install low-level implementations and bindings for statsmodels
+      apt: pkg=python-statsmodels-lib state=installed update_cache=true
+
+    - name: Install Python based plotting system in a style similar to Matlab
+      apt: pkg=python-matplotlib state=installed update_cache=true
+
+    - name: Install Python based plotting system (data package)
+      apt: pkg=python-matplotlib-data state=installed update_cache=true
+
+    - name: Install Python based plotting system (documentation package)
+      apt: pkg=python-matplotlib-doc state=installed update_cache=true
+
+    - name: Install Python plotting area-proportional two- and three-way Venn diagrams
+      apt: pkg=python-matplotlib-venn state=installed update_cache=true
+
+    - name: Install Enhanced interactive Python 2 shell
+      apt: pkg=ipython state=installed update_cache=true
+
+    - name: Install transitional dummy package for python-qtconsole
+      apt: pkg=ipython-qtconsole state=installed update_cache=true
+
+    - name: Install syntax highlighting package written in Python
+      apt: pkg=python-pygments state=installed update_cache=true
+
+    - name: Installdocumentation for the Pygments
+      apt: pkg=python-pygments-doc state=installed update_cache=true
+
+    - name: Install Python interface to MySQL
+      apt: pkg=python-mysqldb state=installed update_cache=true
+
+    - name: Install SQL toolkit and Object Relational Mapper for Python
+      apt: pkg=python-sqlalchemy state=installed update_cache=true
+
+    - name: Install documentation for the SQLAlchemy Python library
+      apt: pkg=python-sqlalchemy-doc  state=installed update_cache=true
+
+    - name: Install SQL toolkit and Object Relational Mapper for Python - C extension
+      apt: pkg=python-sqlalchemy-ext state=installed update_cache=true
+
+    - name: Install PyZMQ Zero MQ Python Bindings
+      pip:
+        name: pyzmq
+        
+  handlers:
+    - name: Start MariaDB Server
+      service: name=mysql state=started
+  
+    
+   
