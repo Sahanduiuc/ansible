@@ -33,11 +33,15 @@ Ansible Playbook for configuring a (L)ubuntu desktop environment to be
 used for Algorithmic Trading Research.  This is based off of the
 awesome educational program put together by Michael Halls-Moore at [QuantStart](https://www.quantstart.com/)
 
+#### YAML File(s)
+
+* algorithmic-trading-research-ubuntu-17.04.yml
+
 #### Examples
 
 ##### Execute the Ansible Playbook
 This assumes of course, that you have an inventory file name 'hosts'
-and that you have setup SSH public key authentication setup between
+and that you have setup SSH public key authentication  between
 your ansible client environment and the host(s) your trying to connect
 to.  You will need to replace my username "tmendoza" with the user
 name of the id connecting to the host(s) in your inventory file.
